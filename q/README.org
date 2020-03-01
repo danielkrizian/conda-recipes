@@ -1,0 +1,4 @@
+#+begin_src bash -i :results none :session conda-build-q
+QLICSRC=~/tmp QZIP=~/tmp QBUILD=$(./getQBUILD.sh) conda build --no-long-test-prefix --no-include-recipe .
+conda install -c local -y q # q-3.6-2019.09.19
+#+end_src

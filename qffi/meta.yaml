@@ -1,0 +1,39 @@
+package:
+  name: qffi
+  version: 0.11.0
+
+source:
+  - url: https://github.com/KxSystems/ffi/releases/download/v0.11.0/ffi_linux-v0.11.0.tar.gz
+    folder: src
+
+requirements:
+  build:
+    - qutil
+  run:
+    - libffi>=3.1
+    - qutil
+
+build:
+  noarch: generic
+  script:
+    - mkdir -p "${QPATH}"/ffi
+    - cp    src/ffi.q "${QPATH}"/ffi/
+    - echo "\\l ffi.q" > init.q && cp init.q "${QPATH}"/ffi/
+    - cp    src/ffi.q "${QHOME}"/
+    - cp -r src/l64    "${QHOME}"/ #[linux and x86_64]
+    - cp -r src/l32    "${QHOME}"/ #[not x86_64]
+
+test:
+  source_files:
+    - src/test_ffi.q
+  requires:
+    - q
+  commands:
+    - q16 src/test_ffi.q -q
+    - echo ".utl.require\"ffi\";.ffi;exit 0" > test.q && q16 test.q -q
+
+about:
+  home: https://github.com/kxsystems/ffi
+  license: Apache-2.0
+  license_file: src/LICENSE.ffi
+  summary: Foreign function interface for kdb+ http://code.kx.com/q/interfaces/ffi/

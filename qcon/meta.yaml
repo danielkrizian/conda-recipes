@@ -1,0 +1,17 @@
+package:
+  name: qcon
+  version: 2020.02.05
+
+source:
+  - git_url: https://github.com/KxSystems/kdb.git
+    git_depth: 1
+
+build:
+  script:
+    - OSL=l #[linux]
+    - OSL=m #[osx]
+    - OSL=${OSL}64 #[x86_64]
+    - DEST=$PREFIX/q/$OSL
+    - mkdir -p $DEST
+    - cp $SRC_DIR/$OSL/qcon $DEST
+    - ln $DEST/qcon $PREFIX/bin/qcon
