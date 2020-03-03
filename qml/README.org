@@ -1,0 +1,4 @@
+#+begin_src bash -i :results none :session conda-build-qml
+conda build .
+conda install -y jmcmurray::qutil local::qml
+#+end_src

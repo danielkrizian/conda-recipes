@@ -1,4 +1,4 @@
 #+begin_src bash -i :results none :session conda-build-qffi
 conda build .
-conda install -c local -y qffi
+conda install -y jmcmurray::qutil local::qffi
 #+end_src

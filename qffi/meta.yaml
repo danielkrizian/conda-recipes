@@ -8,20 +8,22 @@ source:
 
 requirements:
   build:
+    - q
     - qutil
   run:
     - libffi>=3.1
+    - q
     - qutil
 
 build:
   noarch: generic
   script:
     - mkdir -p "${QPATH}"/ffi
-    - cp    src/ffi.q "${QPATH}"/ffi/
+    - cp src/ffi.q "${QPATH}"/ffi/
     - echo "\\l ffi.q" > init.q && cp init.q "${QPATH}"/ffi/
-    - cp    src/ffi.q "${QHOME}"/
-    - cp -r src/l64    "${QHOME}"/ #[linux and x86_64]
-    - cp -r src/l32    "${QHOME}"/ #[not x86_64]
+    - cp src/ffi.q "${QHOME}"/
+    - cp -r src/l64 "${QHOME}"/ #[linux and x86_64]
+    - cp -r src/l32 "${QHOME}"/ #[not x86_64]
 
 test:
   source_files:
@@ -30,7 +32,7 @@ test:
     - q
   commands:
     - q16 src/test_ffi.q -q
-    - echo ".utl.require\"ffi\";.ffi;exit 0" > test.q && q16 test.q -q
+    - echo ".utl.require\"ffi\";.ffi;exit 0" | q16 -q
 
 about:
   home: https://github.com/kxsystems/ffi
