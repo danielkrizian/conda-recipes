@@ -1,4 +1,12 @@
+Build locally ...
+
 #+begin_src bash -i :results none :session conda-build-qml
 conda build .
 conda install -y jmcmurray::qutil local::qml
+#+end_src
+
+... or alternatively, install from Anaconda Cloud:
+
+#+begin_src bash -i :results none :session conda-build-qml
+conda install -y jmcmurray::qutil danielkrizian::qml
 #+end_src

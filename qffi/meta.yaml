@@ -16,7 +16,6 @@ requirements:
     - qutil
 
 build:
-  noarch: generic
   script:
     - mkdir -p "${QPATH}"/ffi
     - cp src/ffi.q "${QPATH}"/ffi/

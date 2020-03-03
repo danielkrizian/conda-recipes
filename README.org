@@ -1,0 +1,10 @@
+* Conda Recipes
+A set of Anaconda recipes for building packages for q, some to be built locally, some distributed via Anaconda cloud.
+
+Many packages depend on [[q/README.org][q package]], (has to be [[q/README.org][built]] first), or [[https://github.com/jonathonmcmurray/conda-recipes][jonathonmcmurray/conda-recipes/qutil]] package, which have to be installed alongside. See accompanying READMEs for build and install instructions.
+
+Locally built and/or Anaconda Cloud distributed packages can then be installed with:
+
+#+begin_src bash -i :results none :session conda-install-all
+conda install -y local::q local::qcon jmcmurray::qutil danielkrizian::qml danielkrizian::qffi
+#+end_src
