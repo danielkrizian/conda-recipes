@@ -16,8 +16,9 @@ build:
     - cp $SRC_DIR/${OSL}64/q $QHOME/${OSL}64
     - cp $SRC_DIR/q.k $QHOME
     - cp $SRC_DIR/kc.lic $QHOME
-    - echo -e '#!/bin/bash \n numactl --physcpubind=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 $QHOME/l64/q "$@"' > $PREFIX/bin/q16
-    - chmod +x $PREFIX/bin/q16
+    - mkdir $PREFIX/bin
+    - cp $SRC_DIR/bin/q16 $PREFIX/bin
+#   - chmod +x $PREFIX/bin/q16
     - ln $QHOME/${OSL}64/q $PREFIX/bin/q
 
 source:
